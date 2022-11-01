@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import './index.css';
-import Simulation from './simulation';
+import GroupPage from './pages/GroupPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <div className="content">
-      <Simulation/>
-    </div>
+  <div className="content">
+    <GroupPage />
+  </div>
 );
