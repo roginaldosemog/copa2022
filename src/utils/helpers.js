@@ -1,6 +1,6 @@
-import teams from '../data/teams'
+import { teamsInfo } from '../data'
 
-export const getTeamName = (teamId) => teams.find(team => team.id === teamId).name;
+export const getTeamName = (teamId) => teamsInfo.find(team => team.id === teamId).name;
 export const getWinnerMessage = (winner) => winner === null ? 'Draw!' : `${getTeamName(winner)} won!`;
 
 export const getRandomGameResult = (teamA, teamB, canDraw) => {
@@ -13,5 +13,5 @@ export const getRandomGameResult = (teamA, teamB, canDraw) => {
     if (canDraw || scoreA !== scoreB) {
         return { scoreA, scoreB, winner }
     }
-    return getRandomGameResult();
+    return getRandomGameResult(teamA, teamB, canDraw);
 }

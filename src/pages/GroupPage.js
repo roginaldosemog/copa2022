@@ -1,17 +1,19 @@
-import GroupGames from '../components/GroupGames';
+import FinalStageResults from '../components/FinalStageResults';
+import GroupStageResults from '../components/GroupStageResults';
+import GroupStageStandings from '../components/GroupStageStandings';
 
-import groupGames from '../data/games';
-import { getRandomGameResult } from '../utils';
+import { groupsInfo, groupStageGames } from '../data';
+import { getGroupStageResults, getFinalStageResults } from '../utils/groupStage';
 
 const GroupPage = () => {
-    const getGroupGamesWithResults = () => groupGames.map(game => {
-        const gameResult = getRandomGameResult(game.teamA, game.teamB, true);
-        return { ...game, ...gameResult }
-    })
+    const groupStageResults = getGroupStageResults(groupStageGames, groupsInfo);
+    const finalStageResults = getFinalStageResults(groupStageResults);
 
     return (
         <>
-            <GroupGames groupGames={getGroupGamesWithResults()} />
+            <GroupStageResults groupStageResults={groupStageResults} />
+            <GroupStageStandings groupStageResults={groupStageResults} />
+            <FinalStageResults finalStageResults={finalStageResults} />
         </>
     )
 }
